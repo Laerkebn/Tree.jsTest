@@ -18,16 +18,16 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
 
 // Lys
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+const directionalLight = new THREE.DirectionalLight(0xA6EFFF, 1)
 directionalLight.position.set(2, 1, 2)
 scene.add(directionalLight)
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
+const ambientLight = new THREE.AmbientLight(0x060945, 0.5)
 scene.add(ambientLight)
 
 // Baggrund
 const imgLoad = new THREE.TextureLoader()
-imgLoad.load('/Billeder/dybtvand.png', texture => {
+imgLoad.load('/Billeder/dybtvand.webp', texture => {
   scene.background = texture
 })
 
@@ -35,7 +35,7 @@ imgLoad.load('/Billeder/dybtvand.png', texture => {
 let textMesh // global variabel til animation
 const fontLoader = new FontLoader()
 fontLoader.load('/Fonts/Rubik.json', font => {
-  const textGeo = new TextGeometry('Drowning', {
+  const textGeo = new TextGeometry('dykker', {
     font: font,
     size: 2,
     height: 0.5,
@@ -53,8 +53,8 @@ fontLoader.load('/Fonts/Rubik.json', font => {
 function animate() {
   requestAnimationFrame(animate)
   if (textMesh) {
-    textMesh.rotation.x += 0.09
-    textMesh.rotation.y += 0.0009
+    textMesh.rotation.x += 0.03
+    textMesh.rotation.y += 0.009
   }
   renderer.render(scene, camera)
 }
